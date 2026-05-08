@@ -10,6 +10,7 @@ const SENSITIVE_KEY_PATTERNS = [
   /token/i,
   /secret/i,
   /authorization/i,
+  /credential/i,
   /cookie/i,
   /api[_-]?key/i,
   /private[_-]?key/i,
@@ -116,7 +117,7 @@ const logger = (req, res, next) => {
         if (bodyStr.length < MAX_BODY_LOG_LENGTH) {
           console.log(`   [${getTimestamp()}] Body: ${bodyStr}`);
         } else {
-          console.log(`   [${getTimestamp()}] Body: [too large to log]`);
+          console.log(`   [${getTimestamp()}] Body: [too large to log: ${bodyStr.length} chars]`);
         }
       } catch (err) {
         console.log(`   [${getTimestamp()}] Body: [error parsing body]`);
